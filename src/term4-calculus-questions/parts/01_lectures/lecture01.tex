@@ -1,0 +1,194 @@
+\Subsection{Лекция 1}
+
+\begin{definition}\thmslashn
+	
+	$L^p(E, \mu) :+ \{f : E \to \bar{\R} | \int\limits_{E} |f|^p\,d\mu < + \infty\}$
+	
+	$||f||_p = \left( \int\limits_{E} |f|^p\,d\mu  \right)^{1/p}$
+	
+	$\ess \sup |f(x)| := \inf \{A : |f(x)| \leqslant A \text{ при п.в. } A\}$
+	
+	$||f||_\infty := \ess \sup|f|$
+	
+\end{definition}
+
+\begin{theorem}\thmslashn 
+	
+	$L^p(E, \mu)$ -- полное пространство
+	
+\end{theorem}
+
+\begin{proof}{Для $p < + \infty$}\thmslashn
+	
+	$f_n \in L^p(E, \mu) \forall \varepsilon > 0 \exists N \,\, \forall m, n \geqslant N ||f_n - f_m||_p < \varepsilon$
+	
+	$\varepsilon = \frac{1}{2}$ $\exists n_1 \;\;\forall m \geqslant  n_1, n \geqslant n_1 \;\; ||f_n - f_m|| < \frac{1}{2}$
+
+	$\varepsilon = \frac{1}{4}$ $\exists n_1 \;\;\forall m \geqslant  n_1, n \geqslant n_1 \;\; ||f_n - f_m|| < \frac{1}{4}$
+	
+	$||f_{n_k} - f_{n_{k-1}}|| < \frac{1}{2^{k-1}} \Rightarrow \sum\limits_{k = 1}{\infty} \norm{ f_{n_k} - f_{n_{k-1}}} < 1$
+	
+	$S(t) := \sum\limits_{k = 1}^{\infty} \abs{ f_{n_k}(t) - f_{n_{k-1}}(t)}  \in [0, + \infty]\;\; S_m(t)$ -- частичная сумма
+	
+	$\norm{S_m} = \norm{\sum\limits_{k = 1}^{m} \abs{ f_{n_k}(t) - f_{n_{k-1}}(t)}} \leqslant \sum\limits_{k = 1}^{m} \abs{ f_{n_k}(t) - f_{n_{k-1}}(t)} < 1$
+	
+	$\norm{S_m}^p = \int\limits_{E} S^p\,d\mu = \int\limits_{E} \lim S_m^p\,d\mu \leqslant \liminf \int\limits_{E} S_m^p\,d\mu = \liminf\norm{S_m}^p \leqslant 1$
+
+	$\Rightarrow S(t)$ почти всюду конечно $\Rightarrow $ ряд $\sum\abs{ f_{n_k} - f_{n_{k-1}} }$ сходится при почти всех $t$
+		
+	$\Rightarrow \sum \left( f_{n_k} - f_{n_{k-1}} \right)$ сходится при почти всех $t$
+	
+	$\sum\limits_{k = 1}^{m} \left(f_{n_k} - f_{n_{k-1}}\right) = f_{n_m} - f_{n_{0}}$ имеет предел при почти всех $t \Rightarrow f_{n_m}(t)$ имеет предел при почти всех $t$
+	
+	Осталось понять, что $\norm{f_{n_m} - f}^p \to 0$
+	
+	$\norm{f_{n_m} - f}^p = \int\limits_{E}|f_{k_m} - f|^p\,d\mu \to \int\limits_{E}\lim |f_{k_m} - f|^p\,d\mu = 0$
+	
+	$-f_{n_m} - f = \sum_{k = m+1}^{\infty}\left( f_{n_k} - f_{n_{k-1}}\right) \Rightarrow |f - f_{n_k}| \leqslant S \Rightarrow |f - f_{n_k}|^p \leqslant S^p$ а это суммируемая мажоранта
+	
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	Функция ступенчатая, если у нее конечное число значений
+	
+\end{definition}
+
+\begin{remark}\thmslashn
+
+	Если $f$ ступенчатая и $f \in L^P(E, \mu)$ при $p < + \infty$, то $\mu E\{f \not = 0\} < +\infty$
+	
+\end{remark}
+
+\begin{proof}\thmslashn
+
+	Пусть $c = \min$ по модулю ненулевого значения
+	
+	$+\infty > \int\limits_{E} |f|^p\,d\mu \geqslant \int\limits_{E\{f \not = 0\}} c^p\,d\mu$
+
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	$A \subset X$ -- метрическое пространство $A$ -- всюду плотное, если $\Cl A = X$
+	
+\end{definition}
+
+\begin{theorem}\thmslashn 
+	
+	Множество ступенчатых функций из $L^p(E, \mu)$ плотно в $L^p(E, \mu)$
+	
+\end{theorem}
+
+\begin{proof}\thmslashn
+	
+	$p = +\infty$ Возьмем $f \in L^p(E, \mu)$ и подправим ее так, что 
+	
+	$|f| \leqslant \norm{f}_\infty < + \infty$ $\TODO$ рисунок
+	
+	$p < +\infty$ Пусть $f \geqslant 0 \Rightarrow$ найдется $f_n \leqslant f$ -- простая, т.ч. $\lim f_n(t) = f(t) \forall t \in E$ монотонно при каждом $f$
+	
+	$\norm{f - f_n}_p^p = \int\limits_{E}|f_n - f|^p\,d\mu \to\int\limits_{E}\lim |f_n - f|^p\,d\mu = 0$
+	
+	Если $f$ -- производ. $f = f_{+} - f_{-} \Rightarrow \exists f_n, g_n \in L^p(E, \mu)$, т.ч. $\norm{f_n - f_{+}}_p \to 0 \,\, \norm{g_n - f_{-}}_p \to 0$
+	
+	$\norm{(f_n - g_n) - (f_+ - f_-)}_p \leqslant \norm{f_n - f_+}_p + \norm{g_n - f_-}_p \to 0$
+	
+\end{proof}
+
+\begin{theorem}\thmslashn 
+	
+	Если $p < +\infty$ и $E \in \R^n$ измерима по Лебегу, то множество бесконечно дифференцируемых функция, равных нулю вне компакта, плотно в $L^p(E, \mu)$
+	
+\end{theorem}
+
+\begin{designations}\thmslashn
+	
+	$C_0^{\infty}(E) = \{f\in C^\infty(E) \text{ и } \Cl\{f\not = 0\} \text{-- компакт, т.е. это огр. множество}\}$
+	
+\end{designations}
+
+\begin{definition}\thmslashn
+	
+	Оператор сдвига $f: \R^n \to \bar{\R} \quad h \in \R^m$
+	
+	$f_h(x) := f(x + h)$
+	
+\end{definition}
+
+
+\begin{theorem}{о непрерывности сдвига}\thmslashn 
+	\begin{enumerate}
+		\item 
+		Если $f$ равномерно непрерывна, то $\norm{f_h - f}_\infty \to 0$
+		
+		\item
+		Если $f\in L^p(E, \mu)$ при $p < +\infty$, то $\norm{f_h - f}_p \to 0$
+		
+		\item
+		Если $f$ непрерывна на $\R$ и $2\pi$ периодична, то $\norm{f_h - f}_\infty \to 0$
+		
+	\end{enumerate}
+	
+\end{theorem}
+
+
+\begin{proof}\thmslashn
+	
+	\begin{enumerate}
+	\item 
+	$\norm{f_h - f}_\infty  = \sup\limits_{x \in \R^n} \abs{f_h(x) - f(x)} = \sup\limits_{x \in \R^n} \abs{f(x+ h) - f(x)}$
+	
+	$\forall \varepsilon > 0\,\, \exists \delta > 0: |h| < \delta\,\forall x \in \R^n\, |f(x+h) - f(x)| < \varepsilon$
+	
+	\item
+	$f\in L^p(E, \mu)$ найдем $g \in C_0^\infty(\R^n)$, т.ч. $\norm{f - g}_p < \varepsilon$
+	
+	Пусть $g = 0$ вне $B_R(0)$
+	
+	$\norm{f_h - f}_p \leqslant \norm{f_h - g_h}_p + \norm{g_h - h}_p + \norm{g - f}_p < 2\varepsilon + \norm{g_h - g}_p < 3\varepsilon$ 
+	
+	Надо бы доказать последний переход, но $g$ равномерно непрерывна $\Rightarrow \norm{g_h - g}_{\infty} \to 0$
+	
+	$\norm{g_h - g}^p_p = \int\limits_{\R^n}\abs{g(x + h) - g(x)}^p\,dx = \int\limits_{B_{2R}(0)}|\ldots|^p\,dx \leqslant \lambda B_{2R}(0) \cdot \norm{g_h - g}_\infty \to 0$
+	
+	
+	\item
+	Теорема кантора
+	
+	\end{enumerate}
+	
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	Скалярное произведение $<\cdot, \cdot>: X\times X \to \R(\CC)$
+	
+	\begin{enumerate}
+		\item 
+		$<x, x> \geqslant 0$ и $<x, x> = 0 \Leftrightarrow x = 0$
+		
+		\item 
+		$<x+y, z> = <x, z> + <y, z>$
+		
+		\item
+		$<x, y> = \bar{<y, x>}$
+		
+		\item
+		$<\alpha x, y> = \alpha<x, y>$
+		
+		Гильбертово пространство -- полное пространство со скалярным произведением
+		
+	\end{enumerate}
+	
+\end{definition}
+
+\begin{example}\thmslashn
+	
+	$L^2(E, \mu) \quad <f, g> := \int\limits_{E} f\bar{g}\,d\mu$
+	
+	$l^2 = \{x = (x_1, x_2, \ldots): \sum |x^k|^2 < +\infty\} \quad <x, y> := \sum_{k = 1}^{\infty} x_k\bar{y_k}$
+	
+	$\norm{x} = \left( \sum\limits_{k = 1}^\infty |x_k|^2 \right)^{1/2}$
+	
+\end{example}
