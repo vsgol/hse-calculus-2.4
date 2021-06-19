@@ -233,6 +233,8 @@
   \DeclareMathOperator{\Ann}{Ann}
   \DeclareMathOperator{\Tr}{Tr}
   \DeclareMathOperator{\grad}{grad}
+  \DeclareMathOperator{\Lin}{Lin}
+  \DeclareMathOperator{\Lip}{Lip}
   \newcommand{\actson}{\curvearrowright}
   \newcommand{\punct}{\mathring} 
   \usepackage{
@@ -296,6 +298,7 @@
   \declaretheorem[numbered=no, name=Пример, style=thmstyle_examp]{example}
   \declaretheorem[numbered=no, name=Свойства, style=thmstyle_cons]{properties}
   \declaretheorem[numbered=no, name=Свойство, style=thmstyle_cons]{property}
+  \declaretheorem[numbered=no, name=Напоминание, style=thmstyle_cons]{reminder}
   \declaretheorem[numbered=no, name=Упражнение, style=thmstyle_examp]{exerc}
   
   % написать после \begin{proof} и т.п., чтобы
@@ -335,6 +338,7 @@
 \def\abs#1{\left|#1\right|}
 \def\norm#1{\left\|#1\right\|}
 \def\toto#1{\underset{#1}\rightrightarrows}
+\def\tou#1{\underset{#1}\to}
 
 \catcode`@=11
 \def\caseswithdelim#1#2{\left#1\,\vcenter{\normalbaselines\m@th

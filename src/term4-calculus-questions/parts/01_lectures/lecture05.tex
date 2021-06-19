@@ -1,0 +1,230 @@
+\Subsection{Лекция 5}
+
+\begin{lemma}[Римана-Лебега]\thmslashn
+	
+	$E \subset\R \quad f: E \to \R$ суммируема
+	
+	Тогда $\int\limits_{E} f(t)e^{i\lambda t}\, dt \tou{\lambda \to \pm \infty} 0, \int\limits_{E} f(t) \cos(\lambda t) \, dt \to 0$ (аналогично с синусом)
+	
+\end{lemma}
+
+\begin{consequence}\thmslashn
+	
+	Если $f\in L^1[0, 2\pi]$, то $a_k(f), b_k(f), c_k(f) \to 0$
+	
+\end{consequence}
+
+\begin{proof}\thmslashn
+
+	Доопределим $f$ нулем
+	
+	$\int\limits_{\R} f(t)e^{i\lambda t}\, dt = \int\limits_{\R} f(u + h)e^{i\lambda t} e^{i\lambda u} e^{i\lambda h}\, du$ возьмем $h = \frac{\pi}{\lambda}$
+	
+	$2\int\limits_{\R} f(t)e^{i\lambda t}\, dt = \int\limits_{\R} f(t)e^{i\lambda t}\, dt - \int\limits_{\R} f(t + h)e^{i\lambda t}\, dt = \int\limits_{\R} (f(t) -f(t + h))e^{i\lambda t}\, dt$
+
+	$2\abs{\int\limits_{\R} f(t)e^{i\lambda t}\, dt} = \abs{\int\limits_{\R} (f(t) -f(t + h))e^{i\lambda t}\, dt} \leqslant  \int\limits_{\R} \abs{f(t) -f(t + h)}e^{i\lambda t}\, dt = \norm{f - f_h}\tou{h\to 0}0$ если $f$ суммируема
+
+\end{proof}
+
+\begin{example}[Дискретное преобразование Фурье]\thmslashn
+
+	$x_0, x_1, \ldots, x_{N-1} \rightsquigarrow a_0, a_1, \ldots, a_{N-1}$
+	
+	$a_k = \sum\limits_{n = 0}^{N-1} x_k e^{-\frac{2\pi i}{N} nk}$
+	
+	$x_n = \frac{1}{N}\sum\limits_{k = 0}^{N-1} a_k e^{\frac{2\pi i}{N} nk}$
+	
+	$x(t)$ -- кусочно постоянная
+	
+	$c_k(x) = \frac{1}{\pi}\int\limits_{0}^{2\pi} x(t) e^{i k t}\, dt = \frac{1}{\pi} \sum\limits_{n = 0}^{N - 1}\int\limits_{\frac{2\pi}{N}n}^{\frac{2\pi}{N}(n+1)}x(t) e^{ikt}\,dt = $
+	
+	$ = \frac{1}{\pi} \sum\limits_{n = 0}^{N-1} x_n\frac{e^{-ikt}}{-ik}\Big|_{t = \frac{2\pi}{N}n}^{t = \frac{2\pi}{N}(n+1)} = \frac{i}{\pi k} \sum\limits_{n = 0}^{N - 1} x_{n}\left(e^{-ik\frac{2\pi}{N}(n+1)} - e^{-ik\frac{2\pi}{N}n}\right) = \frac{i}{\pi}\cdot\frac{e^{-ik\frac{2\pi}{N}} - 1}{k} \sum\limits_{n = 0}^{N-1} x_n e^{-ikn\frac{2\pi}{N}} =  \frac{i}{\pi}\cdot\frac{e^{-ik\frac{2\pi}{N}} - 1}{k} \cdot a_n$
+	
+\end{example}
+
+\begin{reminder}\thmslashn
+
+	Модуль непрерывности $\omega_f(\delta) := \sup\{\abs{f(x) - f(t)} : |x - y| \leqslant \delta\}$
+	
+	Липцева функция $\Lip_{M} \alpha \quad \Lip \alpha = \bigcup\limits_{M > 0} \Lip_{M} \alpha$
+	
+	$|f(x) - f(y)| \leqslant M|x - y|^{\alpha} \,\,\forall x, y$
+
+\end{reminder}
+
+
+\begin{remark}\thmslashn
+
+	$f \in \Lip_{M} \alpha \Rightarrow \omega_f(h) \leqslant Mh^{\alpha}$
+
+\end{remark}
+
+\begin{theorem}\thmslashn 
+
+	Пусть $f\in C_{2\pi}\,\, 2\abs{C_k(f)} \leqslant \omega_f\left(\frac{\pi}{k}\right), |a_k(f)| \leqslant \omega_f\left(\frac{\pi}{k}\right)$  и $|b_k(f)| \leqslant \omega_f\left(\frac{\pi}{k}\right)$
+	
+	В частности, если $f\in \Lip_{M} \alpha$, то $2\abs{C_k(f)}, \abs{a_k(f)}, \abs{b_k(f)} \leqslant M\left(\frac{\pi}{k}\right)^\alpha$
+
+\end{theorem}
+
+\begin{proof}\thmslashn
+
+	$c_k(f) = \frac{1}{2\pi}\int\limits_{0}^{2\pi} f(t) e^{-ikt}\,dt = \frac{1}{2\pi}\int\limits_{0}^{2\pi} f(y+h) e^{-iku}\,du \cdot e^{-ikh}\quad h = \frac{\pi}{k}$
+	
+	$2c_k(f) = \frac{1}{2\pi} \int\limits_{0}^{2\pi}f(t)e^{-ikt}\,dt - \frac{1}{2\pi}\int\limits_{0}^{2\pi}f(t + h) e^{-itk}\,dt = \frac{1}{2\pi} \int\limits_{0}^{2\pi} \left(f(t) - f(t + h)\right) e^{-ikt}\,dt$
+	
+	$2|c_k(f)| = \frac{1}{2\pi} \int\limits_{0}^{2\pi} \left|f(t) - f(t + h)\right|\,dt\leqslant \omega_f\left(\frac{\pi}{k}\right)$
+
+\end{proof}
+
+\begin{lemma}\thmslashn
+
+	$f$ -- дифф. функция 
+	
+	$f' \in C_{2\pi}$
+	
+	$c_k(f') = ikc_k(f)$
+	
+	$a_k(f') = kb_k(f)$
+	
+	$b_k(f') = -ka_k(f)$
+
+\end{lemma}
+
+\begin{proof}\thmslashn
+	
+	$c_k(f') = \frac{1}{2\pi} \int\limits_{0}^{2\pi} f'(t) e^{-ikt}\, dt = \frac{f(t) e^{-ikt}}{2\pi}\Big|_{t = 0}^{t = 2\pi} - \frac{1}{2\pi}\int\limits_{0}^{2\pi} f(t) \left(e^{-ikt}\right)'\,dt$ 
+	
+\end{proof}
+
+\begin{theorem}\thmslashn 
+
+	$f\in C^r$ и $f^{(r)} \in \Lip_{M}\alpha$
+
+	Тогда $2|c_k(f)|, |a_k(f)|, |b_k(f)| \leqslant \frac{\pi^\alpha}{k^{r + \alpha}}\cdot M$
+	
+\end{theorem}
+
+\begin{proof}\thmslashn
+
+	Индукция по $r$ 
+	
+	Переход $r \to r+1\,\, f\in C^{r + 1} \Rightarrow f \in C^r \Rightarrow 2|c_k(f)| \cdot k = 2|c_k(f')| \leqslant \frac{\pi^\alpha}{k^{r + \alpha}}\cdot M$
+
+\end{proof}
+
+\begin{definition}[Ядро Дирихле]\thmslashn
+
+	$D_n(t):= \frac{1}{2} + \sum\limits_{k = 1}^{n} \cos kt$
+
+\end{definition}
+
+\begin{properties}\thmslashn
+	
+	\begin{enumerate}
+		\item 
+		$D_n$ -- четная $2\pi$ периодичная функция
+		
+		\item 
+		$D_n(0) = n + \frac{1}{2}$
+		
+		\item
+		Если $t \not = 2\pi l$, то $D_n(t) = \frac{\sin(n+\frac{1}{2})t}{2\sin \frac{t}{2}}$
+		
+	\end{enumerate}
+	
+\end{properties}
+
+\begin{proof}\thmslashn
+
+	$2\sin \frac{t}{2} D_n(t) = \sin(n + \frac{1}{2})t$
+	
+	$2\sin \frac{t}{2} D_n(t) = \sin\frac{t}{2} + 2\sum\limits_{k = 1}^{n} \sin\frac{t}{2} \cos{kt} =  \sin\frac{t}{2} + 2\sum\limits_{k = 1}^{n} \sin(k + \frac{1}{2})t - \sin(k-\frac{1}{2})t$
+	
+\end{proof}
+
+\begin{lemma}\thmslashn
+
+	$S_n(f, x) = \frac{a_0}{2} + \sum\limits_{k = 1}^{n} \left( a_k\cos kx + b_n \sin kx \right) = \frac{1}{2\pi} \int\limits_{-\pi}^\pi D_n(t) f(x \pm t) \,dt = \frac{1}{\pi} \int\limits_{0}^\pi D_n(t)(f(x + t) + f(x - t))\,dt$
+
+\end{lemma}
+
+\begin{proof}\thmslashn
+	
+	$S_n(f, x) = \sum\limits_{k = 0}^{n} A_k(f, x) = \frac{1}{\pi}\sum_{k = 1}^{n} \int\limits_{0}^{2\pi} f(t) \cos k(x - t) \, dt + \frac{1}{2\pi} \int\limits_{0}^{2\pi} f(t)\,dt = \frac{1}{\pi} \int\limits_{0}^{2\pi} f(t) \left(\frac{1}{2} + \sum\limits_{ k = 1}^{n} \cos{k(x - t)}\,dt\right) = \frac{1}{\pi}\int\limits_{0}^{2\pi} D_n(x - t) f(t)\,dt = \frac{1}{\pi} \int\limits_{-\pi}^\pi D_n(u)f(x - u)\,du$
+	
+	$S_n(f, x) = \frac{1}{\pi}\int\limits_{-\pi}^\pi D_n(t) f(x - t)\,dt = \frac{1}{\pi} \int\limits_{0}^\pi \ldots + \frac{1}{\pi}\int\limits_{-\pi}^0 D_n(t) f(x - t)\,dt = \frac{1}{\pi} \int\limits_{0}^{\pi} D_n(t) (f(x + t) + f(x - t))\,dt$
+	
+\end{proof}
+
+\begin{property}\thmslashn
+	
+	$S_n(f, x) = \frac{1}{\pi} \int\limits_{0}^{\delta} D_n(t)\left(f(x + t) + f(x - t)\right)\,dt + o(1) \qquad \delta > 0$
+	
+\end{property}
+
+\begin{proof}\thmslashn
+	
+	Надо понять, что $\int\limits_{0}^\pi D_n(t)\left(f(x + t) + f(x - t)\right)\,dt \tou{n\to \infty} 0$
+	
+	$\int\limits_{0}^\pi D_n(t)\left(f(x + t) + f(x - t)\right)\,dt = \int\limits_{0}^\pi \frac{\sin(n + \frac{1}{2}) t}{2\sin\frac{t}{2}}\left(f(x + t) + f(x - t)\right)\,dt \to 0$ по лемме Римана Лебега
+	
+	$\abs{\frac{f(x + t) + f(x - t)}{2\sin \frac{t}{2}}} \leqslant \frac{1}{2\sin \frac{\delta}{2}}\abs{f(x + t) + f(x - t)}$ -- суммируемая функция
+	
+\end{proof}
+
+\begin{definition}[Принцип локализации]\thmslashn
+
+	Если $f$ и $g$ совпадают в окрестности точки $x_0$, то ряды Фурье для этих функций в точке $x_0$ ведут себя одинаково и если сходятся, то сходятся к одной и той же сумме
+
+\end{definition}
+
+\begin{lemma}\thmslashn
+	
+	Если $f\in L^1[0, 2\pi]$, то $\int\limits_{0}^{\delta} \frac{|f(t)|}{t}\,dt$ и $\int\limits_{0}^{\delta} \frac{|f(t)|}{2\sin \frac{t}{2}}\,dt$ ведут себя одинаково.
+	
+\end{lemma}
+
+\begin{proof}\thmslashn
+
+	$2\sin \frac{t}{2} \leqslant t$ при $0 \leqslant t \leqslant \pi \Rightarrow \frac{|f(t)|}{t} \leqslant \frac{|f(t)|}{2\sin \frac{t}{2}} \Rightarrow$ если второй интеграл сходится, то первый тоже
+	
+	Пусть сходится первый $\int\limits_{0}^\pi = \int\limits_{0}^\delta + \int\limits_\delta^\pi \quad \int\limits_{\delta}^\pi \frac{|f(t)|}{2\sin \frac{t}{2}}\,dt \leqslant \frac{1}{2\sin \frac{\delta}{2}} \int\limits_{\delta}^\pi |f(t)|\,dt$ -- сходится
+	
+	$\frac{|f(t)|}{t} \sim \frac{|f(t)|}{2\sin\frac{t}{2}}$
+
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	$f(x_0 + 0) = \lim\limits_{x\to x_{0}+} f(x) \quad f(x_0 - 0) = \lim\limits_{x \to x_0 -} f(x)$
+	
+	$f_+'(x_0) = \lim\limits_{h \to 0+} \frac{f(x_0 + h) - f(x_0)}{h} \quad f_-'(x_0) = \lim\limits_{h \to 0+}\frac{f(x_0 - h) - f(x_0)}{-h}$
+	
+	$f_x^*(t) := f(x + t) + f(x - t) - f(x + 0) - f(x - 0) = f(x + t) + f(x - t) - 2f(x)$ в точке регулярности
+	
+\end{definition}
+
+\begin{definition}\thmslashn
+	
+	$x_0$ -- регулярная точка, если $f(x_0) = \frac{f(x_0 + 0) + f(x_0 - 0)}{2}$
+	
+	все непрерывные точки регулярны
+	
+\end{definition}
+
+\begin{theorem}[Признак Дини]\thmslashn 
+
+	$f \in L^1[0, 2\pi], x$ -- точка непрерывности или разрыва I рода
+	
+	$\delta > 0$ Если $\int\limits_{0}^{\delta} \frac{|f^*_{\alpha} (t)|}{t}\,dt$ сходится, то ряд Фурье для этой функции $f$ в точке $x$ сходится к $\frac{f(x+ 0) + f(x - 0)}{2}$
+
+\end{theorem}
+
+\begin{proof}\thmslashn
+	
+	$S_n(f, x) - \frac{f(x + 0) + f(x - 0)}{2} = \frac{1}{\pi}\int\limits_{0}^{\pi} D_n(t)\left( f(x + t) + f(x - t) \right)\,dt - \frac{1}{\pi}\int\limits_{0}^{\pi}D_n(t)\left(f(x + 0) + f(x - 0)\right) = \frac{1}{\pi}D_n(t) f^*_x(t) \,dt = \frac{1}{\pi}\int\limits_{0}^{\pi}\frac{\sin(n + \frac{1}{2} t)}{2\sin \frac{t}{2}} f^*_x(t)\,dt \tou{\text{Р-Л}} 0$
+	
+	$\int\limits_{0}^{\pi} \frac{|f_x^*(t)|}{2\sin \frac{t}{2}}\,dt < +\infty \Leftrightarrow \int\limits_{0}^{\delta} \frac{|f_x^*(t)|}{t}\,dt < + \infty$
+
+\end{proof}

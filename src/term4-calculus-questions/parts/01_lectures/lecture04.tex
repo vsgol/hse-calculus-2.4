@@ -1,0 +1,268 @@
+\Subsection{Лекция 4}
+
+\begin{example}[Функция Хаара]\thmslashn
+	
+	$h_0 \equiv 1, \quad h_1 = \begin{cases}
+	1 & \text{на }[0, \frac{1}{2})\\
+	-1 & \text{на }[\frac{1}{2}, 1)\\
+	\end{cases}, \quad 
+	h_2 = \begin{cases}
+	1 & \text{на }[0, \frac{1}{4})\\
+	-1 & \text{на }[\frac{1}{4}, \frac{1}{2})\\
+	\end{cases}, \quad
+	h_3 = \begin{cases}
+	1 & \text{на }[\frac{1}{2}, \frac{3}{4})\\
+	-1 & \text{на }[\frac{3}{4}, 1)\\
+	\end{cases}\ldots$
+
+	Функции из одного блока ортогональны. 
+	
+	Функции из разных блоков ортогональны, тк половина на 1, половина на $-1$
+	
+	Докажем, что это базис в $L^2[0, 1]$
+	
+	$Lin\{h_0, h_1, \ldots, h_{2^n -1}\} = Lin\{\mathbb{1}_{[\frac{k}{2^n}, \frac{k+1}{2^n})} : k = 0, 1, \ldots, 2^n-1\}$
+	
+	$\Cl Lin\{h_n\} = L^2[0, 1]$
+	
+	$\Cl Lin\{\mathbb{1}_{A}: A \text{ -- отрезок с двочино разиональными точками}\}$
+	
+\end{example}
+
+\begin{definition}[Наилучшее приближение]\thmslashn
+	
+	$a \in X, A \subset X\quad \rho(0, A) = \inf\limits_{x \in A} d(a, \infty)$
+	
+\end{definition}
+
+\begin{theorem}\thmslashn 
+	
+	$B$ -- гильбертово пространство, $A$ -- выпуклое замкнутое. Тогда $\exists $ единственное $x \in A$, реализующее наилучшее приближение
+	
+\end{theorem}
+
+\begin{theorem}\thmslashn 
+	
+	$L$ -- замкнутое подпространство в гильбертовом пространстве и $x \not\in L$. Тогда $\exists!$ единственный элемент наилучшего приближения $x$ в $L$ и если это $y$, то $x - y \perp L$, т.е. $x = y + z$, где $y \in L$, $z \perp L$
+	
+	(Такой $y$ называется проекцией $x$ на $L$)
+	
+\end{theorem}
+
+\begin{proof}\thmslashn
+	
+	По предыдущей теореме $\exists! y$ -- элемент наилучшего приближения
+	
+	$\norm{x - y} = \inf\limits_{w \in L} \norm{x - w}\quad z:= x - y$ надо доказать, что $z \perp l\,\, \forall l \in L$
+	
+	$\norm{x - y} \leqslant \norm{x -y - \lambda l} \Rightarrow$ верно и для квадратов 
+	
+	$\norm{x - y}^2 \leqslant \norm{x -y - \lambda l}^2 \Rightarrow \norm{z}^2 \leqslant \norm{z - \lambda l}^2 = \left\langle z - \lambda l, z - \lambda l \right\rangle = \norm{z}^2 - \lambda \left\langle l, z \right\rangle - \bar{\lambda} \left\langle z,l \right\rangle + |\lambda|^2\norm{l}^2$
+	
+	Предположим, что $|\lambda|^2\norm{l}^2\not = 0$ 
+	
+	$ |\lambda|^2\norm{l}^2 \geqslant \lambda \left\langle l, z \right\rangle + \bar{\lambda}\left\langle z,l \right\rangle\quad \lambda := \bar{\left\langle l, z \right\rangle} t, \quad t > 0$
+	
+	$t^2|\left\langle l, z \right\rangle|^2 \norm{l}^2 \geqslant 2|\left\langle l, z \right\rangle|^2\cdot t$ 
+	
+	$t \norm{l}^2 \geqslant 2 \forall t > 0$ противоречие
+	
+\end{proof}
+
+\begin{definition}[Ортогональная проекция на $L$]\thmslashn
+	
+	$P_L : H \to L$
+	
+	$x\to y$, т.ч. $x - y \perp L$
+	
+\end{definition}
+
+\begin{remark}\thmslashn
+	
+	$y$ определена однозначно
+	
+	$y, y' \in L$
+	
+	$x - y \perp L,\,\, x - y' \perp L \Rightarrow y - y' \perp L$, хотя они лежат в $L \Rightarrow y - y' = 0$
+	
+\end{remark}
+
+\begin{definition}[Ортогональное дополнение]\thmslashn
+	
+	$L^\perp = \{x: x\perp L\}$
+	
+\end{definition}
+
+\begin{theorem}\thmslashn 
+	
+	$L $ -- замкнутое подпространство $H$
+	
+	\begin{enumerate}
+		\item 
+		$P_L$ -- линейный оператор 
+		
+		\item
+		Если $L \not = \{0\}$, то $\norm{P_{L}} = 1$
+		
+		\item
+		$P_{L^\perp} = Id - P_L$
+		
+		\item
+		$(L^\perp)^\perp = L$
+		
+	\end{enumerate}
+	
+\end{theorem}
+
+\begin{proof}\thmslashn
+	
+	\begin{enumerate}
+		\item 
+		$x - P_Lx \perp L$
+		
+		$x' - P_Lx' \perp L \Rightarrow \alpha x + \alpha' x' - \left( \alpha P_L x + \alpha'P_Lx' \right)\perp L$
+		
+		$P_Lx, P_Lx' \in L \Rightarrow \alpha P_L x + \alpha'P_Lx'  \in L$
+	
+		\item
+		$P_L x =: y \Rightarrow x - y \perp L \Rightarrow x - y \perp y$
+		
+		$\norm{x - y}^2 + \norm{y}^2 = \norm{x}^2 \Rightarrow \norm{y} \leqslant \norm{x} \Rightarrow \norm{P_L} \leqslant 1$
+		
+		\item
+		$P_{L^\perp}x = x - P_Lx\quad y = P_L x \Rightarrow x - y \perp L \Rightarrow x - y \in L_\perp$
+		
+		Надо проверить, что $x - (x - y) \perp L^\perp$
+		
+		\item
+		$(L^\perp)^\perp = Id - P_{L^\perp} = Id - (Id - P_l) = P_L\quad L = P_L H$
+		
+	\end{enumerate}
+	
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	$X$ --метричное пространство 
+	
+	$X$ -- сепарабельное, если $\exists A$ -- счетное $\subset X$, т.ч. $\Cl A = X$
+	
+\end{definition}
+
+\begin{theorem}\thmslashn 
+	
+	В сепарабельном гильбертовом пространстве существует ортогональный базис
+	
+\end{theorem}
+
+\begin{proof}\thmslashn 
+	
+	Возьмем $A = \{x_1, x_2, \ldots\}$, т.ч. $\Cl A = H$
+	
+	Проредим и сделаем множество независимым $\{y_1, y_2, \ldots\}\quad Lin\{y_1, y_2, \ldots\} = Lin\{x_1, x_2, \ldots\}$
+	
+	Ортогонализация Грамма-Шмидта $\{z_1, z_2, \ldots\}$ ортонормированные
+	
+	$Lin \{z_1, z_2, \ldots, z_n\} = Lin \{y_1, y_2, \ldots , y_n\}$
+	
+	$Lin \{z_1, z_2, \ldots\} = Lin \{y_1, y_2, \ldots\} = Lin\{x_1, x_2, \ldots\}$
+	
+	$\Cl Lin \{z_1, z_2, \ldots\} = \Cl Lin\{x_1, x_2, \ldots\} \supset \Cl A = H \Rightarrow \Cl Lin \{z_1, z_2, \ldots\} = H \Rightarrow$ это базис
+	
+\end{proof}
+
+\begin{theorem}\thmslashn 
+	
+	Бесконечномерное сепарабельное гильбертово пространство изометрично $l^2$
+
+\end{theorem}
+
+\begin{proof}\thmslashn 
+	
+	Пусть $e_1, e_2, \ldots$ базис $\quad x \to (c_1(x), c_2(x), \ldots)$, где $c_i$ -- коэффициенты Фурье
+	
+	$\left\langle x, y \right\rangle = \sum\limits_{n = 1}^{\infty} c_n(x)\bar{c_n(y)}$
+	
+\end{proof}
+
+\begin{definition}\thmslashn
+	
+	$\frac{a_0}{2} + \sum\limits_{k =1}^{n}\left( a_k \cos kx + b_k\sin kx \right)$ -- тригонометрический многочлен
+	
+	Если $|a_k| + |b_k| \not = 0$, то $\deg = n$
+	
+\end{definition}
+
+
+\begin{definition}\thmslashn
+	
+	$\frac{a_0}{2} + \sum\limits_{k =1}^{\infty}\left( a_k \cos kx + b_k\sin kx \right) $ -- тригонометрический ряд
+	
+\end{definition}
+
+\begin{remark}\thmslashn
+	
+	$\cos kx = \dfrac{e^{ikx} + e^{-ikx}}{2}$
+	
+	$\sin kx = \dfrac{e^{ikx} - e^{-ikx}}{2i}$
+	
+	$e^{ikx} = \cos kx + i\sin kx$
+	
+	$\frac{a_0}{2} + \sum\limits_{k =1}^{n}\left( a_k \cos kx + b_k\sin kx \right) = \sum\limits_{k =-n}^{n}c_k e^{ikx}$ -- комплексно-значный тригонометрический многочлен
+	
+\end{remark}
+
+\begin{lemma}\thmslashn
+	
+	Пусть $f(x) = \frac{a_0}{2} + \sum\limits_{k =1}^{\infty}\left( a_k \cos kx + b_k\sin kx \right) = \sum\limits_{k = -\infty}^{\infty}c_k e^{ikx}$ сходится в $L^1[0, 2\pi]$. 
+	
+	Тогда 
+	
+	$a_k = \frac{1}{\pi} \int\limits_{0}^{2\pi} f(x) \cos kx \,dx\quad b_k = \frac{1}{\pi} \int\limits_{0}^{2\pi} f(x) \sin kx \,dx$
+	
+	$c_k = \frac{1}{2\pi} \int\limits_{0}^{2\pi} f(x) e^{-ikx} \,dx$
+	
+\end{lemma}
+
+\begin{proof}\thmslashn 
+	
+	$\abs{ \frac{1}{\pi} \int\limits_{0}^{2\pi} f(x) \cos kx \,dx -  \frac{1}{\pi} \int\limits_{0}^{2\pi} f(x) \sin kx \,dx} \leqslant \frac{1}{\pi} \int\limits_0^{2\pi} |f(x) - S_n(x)| |\cos{kx}|\,dx = \frac{1}{\pi} \int\limits_0^{2\pi} |f(x) - S_n(x)|\,dx = \frac{1}{\pi}\norm{f - S_n}_{L^1} \to 0$
+	
+\end{proof}
+
+\begin{remark}\thmslashn
+	
+	Если $f$ -- четная, то $b_k(f) = 0$
+	
+	Если $f$ -- нечетная, то $a_k(f) = 0$
+	
+\end{remark}
+
+\begin{definition}\thmslashn
+	
+	$f\in L^1[0, 2\pi]\quad a_k, b_k$ и $c_k$ -- коэффициенты Фурье для функции $f$
+	
+\end{definition}
+
+\begin{remark}\thmslashn
+	
+	$|a_k(f)| \leqslant\frac{\norm{f}_{L^1}}{\pi} \quad |b_k(f)| \leqslant \frac{\norm{f}_{L^1}}{\pi}, \quad |c_k(f)| \leqslant \frac{\norm{f}_{L^1}}{2\pi}$
+	
+	$|a_k(f)| = \abs{ \frac{1}{\pi} \int\limits_{0}^{2\pi} f(x) \cos kx \,dx} \leqslant  \frac{1}{\pi} \int\limits_{0}^{2\pi} |f(x)| \,dx = \frac{\norm{f}_{L^1}}{\pi}$
+	
+\end{remark}
+
+\begin{designations}\thmslashn
+	
+	$A_k(x) = \begin{cases}
+	\frac{a_0}{2}, & \text{если } k = 0\\
+	a_k \cos kx + b_k \sin kx, & \text{если } k > 0
+	\end{cases}$
+	
+\end{designations}
+
+\begin{remark}\thmslashn
+	
+	$A_k(x) = \frac{1}{\pi}\left( \int\limits_{0}^{2\pi} f(t) \cos kt \,dt \cdot \cos{kx} + \int\limits_{0}^{2\pi} f(t) \sin kt \,dt \cdot \sin{kx}\right) = \frac{1}{\pi}\int\limits_{0}^{2\pi} f(t) \cos k{x + t}\,dt$ 
+	
+\end{remark}
