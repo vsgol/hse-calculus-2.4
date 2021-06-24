@@ -187,21 +187,21 @@
 
 	\begin{enumerate}
 		\item 
-		$z:= x - S_n$ и покажем, что $z \prec L_n$
+		$z:= x - S_n$ и покажем, что $z \perp L_n$
 		
-		Надо доказать, что $z\prec e_k$ при $k = 1, 2, \ldots, n$
+		Надо доказать, что $z\perp e_k$ при $k = 1, 2, \ldots, n$
 		
 		$\left\langle z, e_k \right\rangle = \left\langle x - S_n, e_k \right\rangle = \left\langle x, e_k \right\rangle - \left\langle \sum\limits_{j = 1}^{n}c_j(x)e_j, e_k \right\rangle = \left\langle x, e_k \right\rangle - \sum\limits_{j = 1}^{n} c_j(x)\left\langle e_j, e_k \right\rangle = \left\langle x, e_k \right\rangle - c_k(x)\left\langle e_k, e_k \right\rangle = 0$
 		
 		\item
-		$x - S_n \prec y$, т.ч. $y \in L_n$
+		$x - S_n \perp y$, т.ч. $y \in L_n$
 		
 		$x - y = S_n + z - y = (S_n - y) + z$, при этом $S_n - y \in L_n$
 		
 		$\norm{x - y}^2 = \norm{S_n - y}^2 + \norm{z}^2 \geqslant \norm{z}^2 = \norm{x - S_n}^2$ и равенство, когда $y = S_n$
 		
 		\item
-		$x = S_n + z$, где $S_n \prec z \Rightarrow \norm{x}^2 = \norm{S_n}^2 + \norm{z}^2 \geqslant \norm{S_n}^2$
+		$x = S_n + z$, где $S_n \perp z \Rightarrow \norm{x}^2 = \norm{S_n}^2 + \norm{z}^2 \geqslant \norm{S_n}^2$
 		
 	\end{enumerate}	
 
@@ -228,7 +228,7 @@
 		Ряд Фурье для $x$ сходится
 		
 		\item
-		$x = \sum\limits_{k = 1}^\infty c_n(x)e_n + z$, где $z \prec e_n \,\,\forall n$
+		$x = \sum\limits_{k = 1}^\infty c_n(x)e_n + z$, где $z \perp e_n \,\,\forall n$
 		
 		\item
 		$x = \sum\limits_{k = 1}^\infty c_n(x)e_n \Leftrightarrow \norm{x}^2 = \sum\limits_{k = 1}^\infty c_n(x)^2e_n^2$ -- тождество Парсевая
@@ -248,7 +248,7 @@
 		$z := x - \sum\limits_{n = 1}^\infty c_n(x)e_n \quad \left\langle z, e_n \right\rangle = \left\langle x, e_n \right\rangle -  \sum\limits_{n = 1}^\infty \left\langle c_k(x)e_k, e_n \right\rangle = \left\langle x, e_n \right\rangle -  c_k(x) \left\langle e_n, e_n \right\rangle = 0$
 		
 		\item
-		$z \prec \sum\limits_{n = 1}^\infty c_n(x)e_n \Rightarrow \norm{x}^2 = \norm{\sum c_n(x)e_n}^2 + \norm{z}^2 = \sum |c_n(x)|^2\norm{e_n}^2 + \norm{z}^2$ 
+		$z \perp \sum\limits_{n = 1}^\infty c_n(x)e_n \Rightarrow \norm{x}^2 = \norm{\sum c_n(x)e_n}^2 + \norm{z}^2 = \sum |c_n(x)|^2\norm{e_n}^2 + \norm{z}^2$ 
 		
 	\end{enumerate}	
 	
@@ -271,7 +271,7 @@
 	
 	Ортогональная система замкнута, если $\forall x\in H$ выполняется тождаство Парсеваля. 
 	
-	Ортогональная система полная, если не существует ненулевого $z$, т.ч. $z \prec e_n\,\,\forall n$
+	Ортогональная система полная, если не существует ненулевого $z$, т.ч. $z \perp e_n\,\,\forall n$
 	
 	Ортогональная система базис, если $\forall x \in H\quad x = \sum c_n(x) e_n$ 
 	
@@ -322,13 +322,13 @@
 		$x = \sum c_n(x)e_n \in \Cl Lin\{e_n\}$
 		
 		\item[1)$\Rightarrow$3)]
-		$z\prec e_n \Rightarrow z = \sum c_n(x)e_n = 0$
+		$z\perp e_n \Rightarrow z = \sum c_n(x)e_n = 0$
 		
 		\item[5)$\Rightarrow$3)]
-		Если $z \prec e_n \,\,\forall n \Rightarrow z\prec Lin\{e_1, e_2, \ldots, e_n\} \Rightarrow z\prec \Cl Lin\{e_n\} = H \Rightarrow z\prec z \Rightarrow \left\langle z, z\right\rangle = 0 \Rightarrow z = 0$
+		Если $z \perp e_n \,\,\forall n \Rightarrow z\perp Lin\{e_1, e_2, \ldots, e_n\} \Rightarrow z\perp \Cl Lin\{e_n\} = H \Rightarrow z\perp z \Rightarrow \left\langle z, z\right\rangle = 0 \Rightarrow z = 0$
 		
 		\item[3)$\Rightarrow$1)]
-		$x = \sum c_n(x)e_n + z$, где $z \prec e_n \Rightarrow$ по 3 $z = 0 \Rightarrow e_n$ -- базис
+		$x = \sum c_n(x)e_n + z$, где $z \perp e_n \Rightarrow$ по 3 $z = 0 \Rightarrow e_n$ -- базис
 		
 		
 	\end{enumerate}	
